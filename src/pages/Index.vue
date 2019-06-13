@@ -20,6 +20,12 @@
         <g-link :to="post.node.path"> {{post.node.title}}</g-link>
       </li>
     </ul>
+      <h2>Reddit link</h2>
+    <ul> 
+      <li v-for="post in $page.redditPost.edges" :key="post.id">
+        <g-link :to="post.node.path"> {{post.node.title}}</g-link>
+      </li>
+    </ul>
 
     <p class="home-links">
       <a href="https://gridsome.org/docs" target="_blank" rel="noopener">Gridsome Docs</a>
@@ -39,7 +45,19 @@ query Posts {
       }
     }    
   }
+  
+   redditPost: allRedditPost {
+      edges{
+        node{
+          id
+          title
+          path
+          thumbnail
+        }
+      }    
+  }
 }
+
 </page-query>
 
 <script>
